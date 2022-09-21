@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 if문, if else문</title>
+</head>
+
+<body>
+    <script>
+        //조건식
+        //if(조건식) {스크립트코드}
+        //조건식이 참일 때 문장내의
+        //스크립트코드가 실행
+        //조건식이 거짓일 때
+        //실행이 안됨.
+
+        let num = 10;
+        if (num > 100) {
+            document.write('안녕하세요');
+        }
+
+        let walk = prompt('하루에 걷는 양은 몇보인가요?', '0');
+        //입력값이 1000보다 작거나 같으면 '힘내 주세요'
+        if (walk <= 1000) {
+            document.write('힘내 주세요');
+        } else {
+            document.write('매우 훌륭해요🙌');
+        }
+    </script>
+</body>
+
+</html>

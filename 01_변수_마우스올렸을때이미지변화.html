@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 올렸을 때 이미지 변화</title>
+    <link href="css/01.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="main_visual">
+        <img class="img1" src="img/beach1.jpg" alt="바다해변의 파라솔" />
+        <button id="btn">이미지축소</button>
+    </section><!-- .main_visual end -->
+
+    <script>
+        //변수 :  데이터를 담는 그릇    
+        // var, let, const
+
+        let img1 = document.getElementsByClassName('img1')[0];
+        let mainVisualBtn = document.getElementById('btn');
+
+        //버튼한테 마우스를 올렸을 때
+        //이미지의 크기는 0.8
+        //이미지의 시간설정
+        //버튼의 글자 변화 => 이미지확대
+        mainVisualBtn.onmouseenter = function () {
+            //실행코드
+            img1.style.transform = 'scale(0.8)';
+            img1.style.transition = '2s';
+            mainVisualBtn.innerText = '이미지확대';
+            img1.src = 'img/beach3.jpg';
+        }
+        //마우스 벗어났을 때
+        //=> onmouseleave
+        //이미지의 크기는 1
+        //이미지의 시간설정
+        //버튼의 글자 변화 => 이미지축소
+        //이미지변화
+        mainVisualBtn.onmouseleave = function () {
+            img1.style.transform = 'scale(1)';
+            img1.style.transition = '2s';
+            img1.src = 'img/beach1.jpg';
+            mainVisualBtn.innerText = '이미지축소';
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 클릭할 때 마다...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #333;
+            line-height: 1;
+        }
+
+        section {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        section figure {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        section figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 1s;
+        }
+
+        section button {
+            width: 100%;
+            height: 50px;
+            border: 0;
+            background-color: rgb(255, 204, 0);
+        }
+
+        .mode {
+            width: 90px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 40px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <p class="mode">다크모드</p>
+    <section>
+        <figure>
+            <img id="img" src="img/nature1.jpg" alt="피크닉이미지" />
+        </figure>
+        <button>이미지변경하기</button>
+    </section>
+
+
+    <script>
+        let img = document.getElementsByTagName('img')[0];
+        let btn = document.getElementsByTagName('button')[0];
+        btn.style.backgroundColor = 'rgb(255, 204, 0)';
+
+        //버튼을 클릭하면 onclick
+        //img 변경
+        //버튼배경컬러 변경
+        //.style.backgroundColor = '';
+        btn.onclick = function () {
+            if (btn.style.backgroundColor == 'rgb(255, 204, 0)') {
+                img.src = 'img/nature2.jpg';
+                btn.style.backgroundColor = 'rgb(0, 255, 137)';
+            } else {
+                img.src = 'img/nature1.jpg';
+                btn.style.backgroundColor = 'rgb(255, 204, 0)';
+            }
+        }
+
+        //다크모드, 기본모드
+        let modeBtn = document.getElementsByClassName('mode')[0];//.mode
+        let bodyBg = document.getElementsByTagName('body')[0];//body태그
+
+        modeBtn.innerText = '다크모드';
+
+        //modeBtn을 클릭했을 때 실행
+        //조건식 modeBtn의 텍스트가 다크모드와 같을 때
+        //modeBtn의 텍스트는 기본모드로 변경
+        //bodyBg의 배경색상 변경
+        //modeBtn의 배경색상 변경
+        //modeBtn의 글자색상 변경
+        modeBtn.onclick = function () {
+            if (modeBtn.innerText == '다크모드') {
+
+                modeBtn.innerText = '기본모드';
+                bodyBg.style.backgroundColor = 'rgb(0, 0, 0)';
+                modeBtn.style.backgroundColor = 'rgb(255, 255, 255)';
+                modeBtn.style.color = 'rgb(0, 0, 0)';
+            } else {
+                modeBtn.innerText = '다크모드';
+                bodyBg.style.backgroundColor = 'rgb(255, 255, 255)';
+                modeBtn.style.backgroundColor = 'rgb(0, 0, 0)';
+                modeBtn.style.color = 'rgb(255, 255, 255)';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
