@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>던킨도너츠</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link href="css/main.css" rel="stylesheet" />
+
+    <script>
+        window.onload = function () {
+            let bigImg = document.getElementById('big_img');//아이디명big_img
+            let imgList = document.getElementsByClassName('small_img')[0];//클래스명 small_img
+            let smallImg = imgList.getElementsByTagName('img');//imgList안에 있는 img태그
+
+            for (let i = 0; i < smallImg.length; i++) {
+                let num = i + 1; //수학적으로 계산
+                let imgChange = this.src = 'img/' + num + '.jpg';
+                //문자 + 문자 : 문자문자
+                //문자 + 1 + 1 : 문자11
+                //1 + 1 = 2
+
+                console.log(imgChange);
+                smallImg[i].onmouseenter = function () {
+                    bigImg.src = imgChange;
+                }
+            }
+
+            let evetImg1 = 'img/sns01.jpg';
+            let evetImg2 = 'img/sns02.png';
+            let evetImg3 = 'img/sns03.png';
+            let evetImg4 = 'img/sns04.png';
+            let evetImg5 = 'img/sns05.png';
+
+            let eventImg = [evetImg1, evetImg2, evetImg3, evetImg4, evetImg5]
+
+            let eventImgBig = document.getElementById('event_img')//아이디명 event_img;
+            let eventBtn = document.getElementById('btn')//아이디명 btn
+            let eventPageNum = document.getElementById('num')//아이디명 num
+            let numList = [1, 2, 3, 4, 5];
+
+            let i = 0;
+
+            //08_배열_이미지변경.html 참고
+            //버튼을 클릭했을 때 실행
+            eventBtn.onclick = function () {
+                i++;
+                if (i >= eventImg.length) {
+                    i = 0;
+                }
+                eventImgBig.src = eventImg[i];
+                //eventPageNum.innerText = numList[i];
+                eventPageNum.innerText = i + 1;
+            };
+            //클릭을 할때마다 1씩 증가
+            //i값이 eventImg가 가지는 값보다 크거나 같을 때
+            //i값을 0으로 돌려준다.
+            //큰이미지의 경로는 eventImg로 설정
+
+
+
+        }//end
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">
+                    <img src="img/logo_dunkindonuts.png" alt="던킨도너츠" />
+                </a>
+            </h1>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="#">브랜드</a></li>
+                    <li><a href="#">스토어</a></li>
+                    <li><a href="#">메뉴</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">온라인스토어</a></li>
+                </ul>
+            </nav><!-- .gnb end -->
+            <ul class="right_nav">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">검색</a></li>
+                <li><a href="#">블로그</a></li>
+                <li><a href="#">인스타그램</a></li>
+            </ul><!-- .right_nav end -->
+
+        </div><!-- .inner end -->
+    </header>
+    <section class="main_visual">
+        <img src="img/1677899702.jpg" alt="" />
+    </section><!-- .main_visual end -->
+
+    <section class="cont01">
+        <div class="inner">
+            <div class="title">
+                <p>DONUTS'S MENU</p>
+                <h3>던킨도너츠의 다양한 음료와 도넛들</h3>
+            </div><!-- .title end -->
+            <div class="list">
+                <figure>
+                    <img id="big_img" src="img/1.jpg" alt="" />
+                </figure>
+                <div class="small_img">
+                    <div class="item">
+                        <img src="img/img_product_1.png" alt="" />
+                        <p>도넛메뉴</p>
+                    </div><!-- .item end 1 -->
+
+                    <div class="item">
+                        <img src="img/img_product_2.png" alt="" />
+                        <p>커피메뉴</p>
+                    </div><!-- .item end 2 -->
+
+                    <div class="item">
+                        <img src="img/img_product_3.png" alt="" />
+                        <p>샌드위치메뉴</p>
+                    </div><!-- .item end 3 -->
+
+                    <div class="item">
+                        <img src="img/img_product_4.png" alt="" />
+                        <p>음료메뉴</p>
+                    </div><!-- .item end 4 -->
+
+                    <div class="item">
+                        <img src="img/img_product_5.png" alt="" />
+                        <p>기타메뉴</p>
+                    </div><!-- .item end 5 -->
+                </div><!-- .small_img end -->
+            </div><!-- .list end -->
+        </div><!-- .inner end -->
+    </section><!-- .cont01 end -->
+
+    <section class="cont02">
+        <div class="inner">
+            <div class="right">
+                <div class="title">
+                    <p>DONUTS'S SNS</p>
+                    <h3>던킨도너츠와 함께하는 SNS</h3>
+                </div><!-- .title end -->
+                <ul>
+                    <li><i class="xi-instagram"></i></li>
+                    <li><i class="xi-facebook-official"></i></li>
+                    <li><i class="xi-blogger"></i></li>
+                    <li><i class="xi-youtube-play"></i></li>
+                    <li><i class="xi-twitter"></i></li>
+                </ul>
+                <p id="btn">SNS 더보기
+                    <span id="num">1</span> / 5
+                </p>
+            </div><!-- .right end -->
+
+            <figure>
+                <img id="event_img" src="img/sns01.jpg" alt="" />
+            </figure>
+
+        </div><!-- .inner end -->
+    </section><!-- .cont02 end -->
+
+    <footer>
+        <div class="inner">
+            <img src="img/footer_logo.png" alt="" />
+            <ul>
+                <li>서울특별시 서초구 남부순환로 2620(양재동 11-149번지)</li>
+                <li>사업자 등록번호 : 303-81-09535</li>
+                <li>개인정보관리책임자 : 김경우</li>
+                <li>비알코리아(주) 대표이사 도세호</li>
+                <li>TEL : 080-555-3131</li>
+            </ul>
+            <p>COPYRIGHT Ⓒ 2016 BRKOREA COMPANY. ALL RIGHTS RESERVED.</p>
+        </div><!-- .inner end -->
+    </footer>
+
+
+</body>
+
+</html>

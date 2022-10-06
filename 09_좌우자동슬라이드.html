@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌우 자동슬라이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .main_visual {
+            width: 100%;
+            height: 80vh;
+            position: relative;
+
+        }
+
+        .main_visual .slides_wrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main_visual .page_num {
+            position: absolute;
+            left: 50%;
+            bottom: -70px;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, .5);
+            line-height: 50px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+        }
+
+
+        .main_visual .slides_wrap .slides {
+            transition: left 0.5s;
+
+            width: calc(100% * 3);
+            display: flex;
+            height: 100%;
+            position: relative;
+            left: 0;
+
+        }
+
+        .main_visual .slides_wrap .slides>div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .main_visual .slides_wrap .slides>div img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main_visual .slides_wrap .slides>div p {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            font-size: 50px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //슬라이드 전체를 감싸는 영역 
+            let slides = document.querySelector('.slides');
+
+            //슬라이드 각각의 영역
+            let slide = document.querySelectorAll('.slides > div');
+
+            //슬라이드 개수
+            let slideCount = slide.length;
+
+            //슬라이드 시작(초기값)
+            let i = 0;
+
+            //슬라이드 페이징 숫자
+            let pageNum = document.querySelector('.num');
+            let pageNumTotal = document.querySelector('.total');
+            pageNumTotal.innerText = slideCount;
+
+            //슬라이드 구현 시 우측에서 좌측이로 페이지 이동에 
+            //대한 값 구하기
+            function slideMove() {
+                i++;
+                slides.style.left = -i * 100 + '%';
+                // 0 => -0%;
+                // 1=> -100%
+                // 2=> -200% ......
+            }//slideMove()
+
+            //3초마다 페이지 이동 
+            //슬라이드 개수가 넘어갈 경우 left값은 0으로 돌려주기
+            //설정한 시간동안 스크립트 코드가 실행 => setInterval()
+            function mainSlides() {
+                setInterval(() => {
+                    //0 < 3 - 1
+                    if (i < slideCount - 1) {
+                        slideMove();
+                    } else {
+                        slides.style.left = 0;
+                        i = 0;
+                    }
+                    console.log(i);
+                    pageNum.innerText = i + 1;
+
+
+                }, 3000);
+            }//mainSlides()
+
+            mainSlides();
+
+
+        }//end
+    </script>
+</head>
+
+<body>
+    <section class="main_visual">
+        <div class="slides_wrap">
+            <div class="slides">
+                <div>
+                    <img src="img/img1.jpg" alt="" />
+                    <p>메인 슬라이드 1</p>
+                </div>
+                <div>
+                    <img src="img/img2.jpg" alt="" />
+                    <p>메인 슬라이드 2</p>
+                </div>
+                <div>
+                    <img src="img/img3.jpg" alt="" />
+                    <p>메인 슬라이드 3</p>
+                </div>
+            </div><!-- .slides end -->
+
+
+
+        </div><!-- .slides_wrap end -->
+        <ul class="page_num">
+            <li class="num">1</li> /
+            <li class="total"></li>
+        </ul><!-- .page_num -->
+    </section><!-- .main_visual end -->
+</body>
+
+</html>
