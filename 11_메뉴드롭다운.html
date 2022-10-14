@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴드롭다운</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav ul .depth01 {
+            display: inline-block;
+            vertical-align: top;
+
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            background-color: palegreen;
+            text-align: center;
+        }
+
+        nav ul .depth01 .depth02 {
+            background-color: rgb(218, 255, 218);
+            display: none;
+        }
+
+        .single {
+            margin-top: 200px;
+        }
+
+        .single .depth01 {
+            background-color: teal;
+            color: #fff;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <script>
+        $(function () {
+            //풀드롭다운
+            //1차메뉴한테 마우스 올렸을 때 실행
+            //2차메뉴를 슬라이드 다운
+            $('.full .depth01').mouseenter(function () {
+                $('.full .depth02').stop().slideDown(1000);
+            });
+
+            //1차메뉴한테 마우스 벗어났을 때(mouseleave)
+            //2차메뉴를 슬라이드 업( slideUp() )
+            $('.full .depth01').mouseleave(function () {
+                $('.full .depth02').stop().slideUp(1000);
+            });
+
+            //싱글드롭다운
+            //1차메뉴한테 마우스 올렸을 때
+            //내가 마우스 올린 선택자의 2차메뉴가
+            //슬라이드 다운
+            $('.single .depth01').mouseenter(function () {
+                $(this).children('.depth02').stop().slideDown();
+            });
+            $('.single .depth01').mouseleave(function () {
+                //$(this).children('.depth02').slideUp();
+                $('.single .depth02').stop().slideUp();
+            });
+        });//jquery end
+
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="full">
+            <ul>
+                <li class="depth01">
+                    <a href="#">menu01</a>
+                    <ul class="depth02">
+                        <li><a href="#">01-01</a></li>
+                        <li><a href="#">01-02</a></li>
+                        <li><a href="#">01-03</a></li>
+                        <li><a href="#">01-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu02</a>
+                    <ul class="depth02">
+                        <li><a href="#">02-01</a></li>
+                        <li><a href="#">02-02</a></li>
+                        <li><a href="#">02-03</a></li>
+                        <li><a href="#">02-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu03</a>
+                    <ul class="depth02">
+                        <li><a href="#">03-01</a></li>
+                        <li><a href="#">03-02</a></li>
+                        <li><a href="#">03-03</a></li>
+                        <li><a href="#">03-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu04</a>
+                    <ul class="depth02">
+                        <li><a href="#">04-01</a></li>
+                        <li><a href="#">04-02</a></li>
+                        <li><a href="#">04-03</a></li>
+                        <li><a href="#">04-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+            </ul>
+        </nav><!-- .full end -->
+
+        <nav class="single">
+            <ul>
+                <li class="depth01">
+                    <a href="#">menu01</a>
+                    <ul class="depth02">
+                        <li><a href="#">01-01</a></li>
+                        <li><a href="#">01-02</a></li>
+                        <li><a href="#">01-03</a></li>
+                        <li><a href="#">01-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu02</a>
+                    <ul class="depth02">
+                        <li><a href="#">02-01</a></li>
+                        <li><a href="#">02-02</a></li>
+                        <li><a href="#">02-03</a></li>
+                        <li><a href="#">02-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+
+                <li class="depth01">
+                    <a href="#">menu03</a>
+                    <ul class="depth02">
+                        <li><a href="#">03-01</a></li>
+                        <li><a href="#">03-02</a></li>
+                        <li><a href="#">03-03</a></li>
+                        <li><a href="#">03-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+                <li class="depth01">
+                    <a href="#">menu04</a>
+                    <ul class="depth02">
+                        <li><a href="#">04-01</a></li>
+                        <li><a href="#">04-02</a></li>
+                        <li><a href="#">04-03</a></li>
+                        <li><a href="#">04-04</a></li>
+                    </ul><!-- .depth02 end -->
+                </li><!-- .depth01 end -->
+            </ul>
+        </nav><!-- .single end -->
+    </header>
+</body>
+
+</html>
