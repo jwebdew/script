@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤이벤트 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <link href="css/18.css" rel="stylesheet" />
+    <script src="lib/jquery-3.6.1.min.js"></script>
+    <script>
+        $(function () {
+            //each안에 있는 index => 매개변수
+            //변수 =>지역변수, 전역변수, 매개변수
+
+            $('header nav ul li').each(function (index) {
+                $(this).addClass('on' + index);
+            });
+
+            $(window).scroll(function () {
+                $('#business .list > div').each(function (index) {
+                    //문서에서부터 div가 떨어진 y축값 + div의 높이값
+                    let listTopHeight = $(this).offset().top + $(this).outerHeight();
+
+                    //스크롤바의 y축값 + 보여지는 화면의 높이값
+                    let windowTopHeight = $(window).scrollTop() + $(window).height();
+
+                    console.log(listTopHeight);
+                    console.log(windowTopHeight);
+                    //listTopHeight보다 windowTopHeight 더 클때
+                    //this한테 클래스명 item + index 추가
+                    if (listTopHeight < windowTopHeight) {
+                        $(this).addClass('item' + index);
+                    } else if ($(window).scrollTop() == 0) {
+                        $(this).removeClass('item' + index);
+                    }
+                    //스크롤바의 값이 == 0과 같을 때 
+                    //this한테 클래스명 item + index 제거
+                });//each()
+
+                //스크롤을 했을 때 
+                //#infomation .list > div한테 클래스명 추가
+                $('#infomation .list > div').each(function (index) {
+                    let listTopHeight = $(this).offset().top + $(this).outerHeight();
+                    let windowTopHeight = $(window).scrollTop() + $(window).height();
+
+                    if (listTopHeight < windowTopHeight) {
+                        $(this).addClass('item' + index);
+                    } else if ($(window).scrollTop() == 0) {
+                        $(this).removeClass('item' + index);
+                    }
+                });//each()
+
+            });
+
+        });//jquery end
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#">IBK시스템</a>
+            </h1>
+            <nav>
+                <ul class="gnb">
+                    <li>
+                        <a href="#">회사소개</a>
+                        <div class="depth02">
+                            <div class="inner">
+                                <ul>
+                                    <li><a href="#">인사말</a></li>
+                                    <li><a href="#">IBK윤리현장</a></li>
+                                    <li><a href="#">회사연혁</a></li>
+                                    <li><a href="#">비전&핵심가치</a></li>
+                                    <li><a href="#">경영철학</a></li>
+                                    <li><a href="#">조직도</a></li>
+                                    <li><a href="#">오시는길</a></li>
+                                </ul>
+                            </div><!-- .inner end -->
+                        </div><!-- depth02 end -->
+                    </li>
+                    <li>
+                        <a href="#">사업영역</a>
+                        <div class="depth02">
+                            <div class="inner">
+                                <ul>
+                                    <li><a href="#">개발실적</a></li>
+                                    <li><a href="#">여신</a></li>
+                                    <li><a href="#">리스크및성과관리</a></li>
+                                    <li><a href="#">캐피탈</a></li>
+                                    <li><a href="#">보험/증권</a></li>
+                                    <li><a href="#">카드</a></li>
+                                    <li><a href="#">R&D</a></li>
+                                    <li><a href="#">금융기타</a></li>
+                                    <li><a href="#">플랫폼사업</a></li>
+                                    <li><a href="#">IBK BOX</a></li>
+                                    <li><a href="#">Cloud지원</a></li>
+                                </ul>
+                            </div><!-- .inner end -->
+                        </div><!-- depth02 end -->
+                    </li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">채용정보</a></li>
+                </ul><!-- .gnb end -->
+                <ul class="right_gnb">
+                    <li><a href="#">CONTACT US</a></li>
+                    <li><a href="#">KOR</a></li>
+                </ul><!-- .right_gnb end -->
+            </nav>
+        </div><!-- .inner end -->
+    </header>
+
+    <ul class="page_menu">
+        <li><a class="on" href="#main_visual">메인</a></li>
+        <li><a href="#business">비즈니스</a></li>
+        <li><a href="#infomation">정보/고객센터</a></li>
+        <li><a href="#news">뉴스/기업소개</a></li>
+    </ul><!-- .page_menu end -->
+
+    <section id="main_visual">
+        <img src="img/visual2.jpg" alt="" />
+        <div class="inner">
+            <h2>
+                고객에 대한 신뢰,<br />
+                최고를 향한 열정<br />
+                IBK시스템
+            </h2>
+        </div><!-- .inner end -->
+    </section><!-- #main_visual end -->
+
+    <section id="business">
+        <div class="inner">
+            <div class="title">
+                <h3>Business Area</h3>
+                <p>Business Area
+                    최고의 금융 IT 전문가들의 기술력과 노하우로 금융업무의 경쟁력을 높이고 있습니다.</p>
+            </div><!-- .title end -->
+            <div class="list">
+                <div>
+                    <figure>
+                        <img src="img/main_business_bg_1.jpg" alt="" />
+                    </figure>
+                    <p>카드</p>
+                </div>
+                <div>
+                    <figure>
+                        <img src="img/main_business_bg_2.jpg" alt="" />
+                    </figure>
+                    <p>R&D</p>
+                </div>
+                <div>
+                    <figure>
+                        <img src="img/main_business_bg_3.jpg" alt="" />
+                    </figure>
+                    <p>금융기타</p>
+                </div>
+                <div>
+                    <figure>
+                        <img src="img/main_business_bg_4.jpg" alt="" />
+                    </figure>
+                    <p>플랫폼사업</p>
+                </div>
+            </div><!-- .list end -->
+        </div><!-- .inner end -->
+    </section><!-- #business end -->
+
+    <section id="infomation">
+        <div class="inner">
+            <div class="title">
+                <h3>IBK System Information</h3>
+            </div><!-- .title end -->
+            <div class="list">
+                <div>
+                    <img src="img/food1.jpg" alt="" />
+                    <dl>
+                        <dt>경영철학</dt>
+                        <dd>IBK시스템 윤리강령을 제정하여<br />
+                            적극 실천 할 것을 다짐합니다.</dd>
+                    </dl>
+                </div>
+                <div>
+                    <img src="img/food2.jpg" alt="" />
+                    <dl>
+                        <dt>고객센터</dt>
+                        <dd>
+                            IBK시스템은 최상의 고객서비스를<br />
+                            제공하기 위해서 노력합니다.
+                        </dd>
+                    </dl>
+                </div>
+
+            </div><!-- .list end -->
+        </div><!-- .inner end -->
+    </section><!-- #infomation end -->
+
+    <section id="news">
+        <div class="slide">
+            <img src="img/img2.jpg" alt="" />
+        </div><!-- .slide end -->
+        <div class="cont_right">
+            <div>
+                <h4>Company</h4>
+                <div class="list">
+                    <ul>
+                        <li><a href="#">회사연혁</a></li>
+                        <li><a href="#">조직도</a></li>
+                        <li><a href="#">오시는길</a></li>
+                        <li><a href="#">IBK시스템 전자사보</a></li>
+                    </ul>
+                </div><!-- .list end -->
+            </div>
+            <div>
+                <h4>입찰공고</h4>
+                <div class="list">
+                    <ul>
+                        <li><a href="#">[입찰공고]기업은행 복지비카드 시스템 고도화 (키보드보안 S/W)</a></li>
+                        <li><a href="#">[입찰공고]기업은행 복지비카드 시스템 고도화 (공인인증서 S/W)</a></li>
+                        <li><a href="#">[입찰 재공고]기업은행 22년 노후 네트워크 보안시스템 교체 및 증설 (L4스위치)</a></li>
+                        <li><a href="#">EPRO(전자구매시스템)</a></li>
+                    </ul>
+                </div><!-- .list end -->
+            </div>
+        </div><!-- .cont_right end -->
+    </section><!-- #news end -->
+
+    <footer>
+        <div class="inner">
+            <ul>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">불편부당신고란</a></li>
+                <li><a href="#">이메일무단수집거부</a></li>
+            </ul>
+            <div>
+                <p>서울시 중구 퇴계로 141-7 뉴서울빌딩 10F~13F (주)IBK 시스템(구 주소 : 서울시 중구 충무로 2가 62-7)</p>
+                <ul>
+                    <li>대표전화 : 02.3407.6600</li>
+                    <li>팩스 : 02.3407.6601</li>
+                </ul>
+            </div>
+            <p>Copyright 2020 IBK System Co. Ltd All Reserved.</p>
+        </div><!-- .inner end -->
+    </footer>
+
+</body>
+
+</html>
